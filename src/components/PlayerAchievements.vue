@@ -43,7 +43,6 @@ const hovered = ref<string | null>(null);
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  padding: 1rem 0;
   list-style: none;
 }
 
@@ -53,8 +52,8 @@ const hovered = ref<string | null>(null);
 
 .achievement-icon {
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: 54px;
+  height: 54px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -69,7 +68,7 @@ const hovered = ref<string | null>(null);
 
 .tooltip {
   position: absolute;
-  top: 70px;
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
   background: #222;

@@ -16,13 +16,13 @@ const { calculatedLevel } = useXpSystem();
     </div>
   </div>
 
-  <UISkeleton v-else :width="80" :height="80" />
+  <UISkeleton v-else :width="100" :height="100" />
 </template>
 
 <style scoped>
 .player-avatar {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   position: relative;
   border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -40,15 +40,15 @@ const { calculatedLevel } = useXpSystem();
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background-color: #099b09;
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   border: 2px solid white;
 }

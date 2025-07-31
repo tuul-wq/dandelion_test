@@ -11,7 +11,13 @@ body {
   line-height: 1.6;
   font-family: system-ui;
   font-size: 15px;
+  background-color: #e0e0e0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }

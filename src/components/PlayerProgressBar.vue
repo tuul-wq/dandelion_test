@@ -10,7 +10,10 @@ const { calculatedLevel, progressPercentage } = useXpSystem();
 
 <template>
   <div v-if="user" class="progress-container">
-    <span class="level-display">Level {{ calculatedLevel }}</span>
+    <div class="user-info">
+      <span>{{ user.name }}</span>
+      <span>Level {{ calculatedLevel }}</span>
+    </div>
     <div class="progress-bar">
       <div class="progress-fill" :style="{ width: progressPercentage }"></div>
       <div class="progress-text">{{ user.xp }} / {{ user.nextLevelXp }} XP</div>
@@ -25,14 +28,17 @@ const { calculatedLevel, progressPercentage } = useXpSystem();
 
 <style scoped>
 .progress-container {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   grid-row-gap: 8px;
   width: 100%;
   max-width: 300px;
   font-family: system-ui;
 }
 
-.level-display {
+.user-info {
+  display: flex;
+  justify-content: space-between;
   font-size: 16px;
   line-height: 20px;
   font-weight: bold;
