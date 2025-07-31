@@ -5,7 +5,7 @@ import type { User } from '@/stores/users';
  */
 export const USER_MOCK: User = {
   name: 'Алексей Петров',
-  avatar: '/https://avatar.iran.liara.run/public/',
+  avatar: 'https://avatar.iran.liara.run/public/',
   level: 12,
   xp: 850,
   nextLevelXp: 1000,
