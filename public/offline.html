@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Profile | Offline</title>
+  <style>
+    :root {
+      --green_100: #42b883;
+      --green_500: #35495e;
+      --bg: linear-gradient(135deg, var(--green_100), var(--green_500));
+      --text-color: #ffffff;
+      --accent: #73f6b9;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      color: var(--text-color);
+      font-family: system-ui;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-shadow: 0 0 10px var(--accent);
+    }
+
+    p {
+      font-size: 1.2rem;
+      opacity: 0.85;
+    }
+
+    .glow {
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px var(--accent);
+      }
+      to {
+        text-shadow: 0 0 20px var(--accent), 0 0 30px var(--accent);
+      }
+    }
+
+    .reload-btn {
+      padding: 0.75rem 2.5rem;
+      font-size: 1rem;
+      background-color: #ffffff;
+      color: var(--green_100);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .reload-btn:hover {
+      background-color: var(--green_100);
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1 class="glow">📴 You’re Offline</h1>
+  <p>No internet connection detected.<br />Please check your network and try again.</p>
+  <button type="button" class="reload-btn" onclick="window.location.reload()">Reload</button>
+</div>
+</body>
+</html>
