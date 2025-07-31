@@ -14,6 +14,12 @@ export const ACTIVITIES_MOCK: Activity[] = [
     id: 2,
     course: 'TypeScript',
     date: '2023-05-10',
-    xp: 30,
+    xp: 20,
+  },
+  {
+    id: 3,
+    course: 'JavaScript',
+    date: '2023-05-19',
+    xp: 300,
   },
 ];

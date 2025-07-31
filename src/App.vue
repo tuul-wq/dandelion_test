@@ -1,10 +1,13 @@
 <script setup lang="ts">
 import { GosuAchievement, PlayerActivity, PlayerAvatar, PlayerProgressBar } from '@/components';
 import { useUserStore } from '@/stores/users';
+import { useActivityStore } from '@/stores/activity';
 
-const { requestUser } = useUserStore();
+const { requestUser, earnXp } = useUserStore();
+const { requestActivities } = useActivityStore();
 
 requestUser();
+requestActivities();
 </script>
 
 <template>
@@ -13,7 +16,7 @@ requestUser();
     <PlayerProgressBar />
 
     <GosuAchievement />
-    <PlayerActivity />
+    <PlayerActivity @earn-xp="earnXp" />
   </div>
 </template>
 

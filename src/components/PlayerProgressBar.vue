@@ -1,23 +1,18 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { storeToRefs } from 'pinia';
 import { UISkeleton } from '@/shared/ui-kit';
 import { useUserStore } from '@/stores/users';
-import { storeToRefs } from 'pinia';
+import { useXpSystem } from '@/composables';
 
 const { user } = storeToRefs(useUserStore());
-
-const progressPercentage = computed(() => {
-  if (!user.value) return 0;
-
-  return Math.min(100, (user.value.xp / user.value.nextLevelXp) * 100);
-});
+const { calculatedLevel, progressPercentage } = useXpSystem();
 </script>
 
 <template>
   <div v-if="user" class="progress-container">
-    <span class="level-display">Level {{ user.level }}</span>
+    <span class="level-display">Level {{ calculatedLevel }}</span>
     <div class="progress-bar">
-      <div class="progress-fill" :style="{ width: progressPercentage + '%' }"></div>
+      <div class="progress-fill" :style="{ width: progressPercentage }"></div>
       <div class="progress-text">{{ user.xp }} / {{ user.nextLevelXp }} XP</div>
     </div>
   </div>
@@ -55,7 +50,7 @@ const progressPercentage = computed(() => {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(to right, #4caf50, #8bc34a);
+  background: linear-gradient(to right, #099b09, #8bc34a);
   border-radius: 8px;
   transition: width 0.3s ease;
   position: relative;
