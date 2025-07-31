@@ -2,26 +2,19 @@
 import { useUserStore } from '@/stores/users';
 import { storeToRefs } from 'pinia';
 import { UISkeleton } from '@/shared/ui-kit';
-import { computed } from 'vue';
 
 const { user } = storeToRefs(useUserStore());
-
-const avatarUrl = computed(() => {
-  if (!user.value) return '';
-
-  return `${user.value.avatar}/${Math.random() * 100}`;
-});
 </script>
 
 <template>
   <div v-if="user" class="player-avatar">
-    <img :src="avatarUrl" :alt="`${user.name} avatar`" class="avatar-image" />
+    <img :src="user.avatar" :alt="`${user.name} avatar`" class="avatar-image" />
     <div class="level-badge">
       {{ user.level }}
     </div>
   </div>
 
-  <UISkeleton v-else :width="40" :height="40" />
+  <UISkeleton v-else :width="80" :height="80" />
 </template>
 
 <style scoped>

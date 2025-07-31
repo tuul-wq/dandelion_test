@@ -15,27 +15,32 @@ const progressPercentage = computed(() => {
 
 <template>
   <div v-if="user" class="progress-container">
-    <div class="level-display">Level {{ user.level }}</div>
+    <span class="level-display">Level {{ user.level }}</span>
     <div class="progress-bar">
-      <div class="progress-fill" :style="{ width: progressPercentage + '%' }" :class="{ 'level-up': true }"></div>
+      <div class="progress-fill" :style="{ width: progressPercentage + '%' }"></div>
       <div class="progress-text">{{ user.xp }} / {{ user.nextLevelXp }} XP</div>
     </div>
   </div>
 
-  <UISkeleton v-else :width="200" :height="20" />
+  <div v-else class="skeleton-container">
+    <UISkeleton :width="80" :height="20" />
+    <UISkeleton :width="300" :height="20" />
+  </div>
 </template>
 
 <style scoped>
 .progress-container {
+  display: grid;
+  grid-row-gap: 8px;
   width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 300px;
   font-family: system-ui;
 }
 
 .level-display {
+  font-size: 16px;
+  line-height: 20px;
   font-weight: bold;
-  margin-bottom: 5px;
   color: #333;
 }
 
@@ -64,5 +69,10 @@ const progressPercentage = computed(() => {
   color: white;
   font-weight: bold;
   font-size: 12px;
+}
+
+.skeleton-container {
+  display: grid;
+  grid-row-gap: 8px;
 }
 </style>
