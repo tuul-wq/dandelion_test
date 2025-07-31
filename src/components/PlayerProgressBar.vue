@@ -36,7 +36,6 @@ const { calculatedLevel, progressPercentage } = useXpSystem();
   font-size: 16px;
   line-height: 20px;
   font-weight: bold;
-  color: #333;
 }
 
 .progress-bar {

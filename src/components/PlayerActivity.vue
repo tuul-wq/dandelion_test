@@ -2,10 +2,10 @@
 import { storeToRefs } from 'pinia';
 import { useActivityStore } from '@/stores/activity';
 import { UISkeleton } from '@/shared/ui-kit';
+import { useUserStore } from '@/stores/users';
 
+const { earnXp } = useUserStore();
 const { activities } = storeToRefs(useActivityStore());
-
-const emit = defineEmits<{ 'earn-xp': [number] }>();
 
 function formatDate(date: string) {
   return new Date(date).toLocaleDateString('ru-RU', {
@@ -19,7 +19,7 @@ function formatDate(date: string) {
 <template>
   <ul v-if="activities.length > 0" class="actions-list">
     <li v-for="activity in activities" :key="activity.id">
-      <button type="button" class="action-card" @click="emit('earn-xp', activity.xp)">
+      <button type="button" class="action-card" @click="earnXp(activity.xp)">
         <span class="action-header">
           <span class="action-title">{{ activity.course }}</span>
           <span class="xp">+{{ activity.xp }} XP</span>

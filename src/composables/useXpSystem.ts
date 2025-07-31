@@ -1,6 +1,6 @@
 import { computed } from 'vue';
-import { useUserStore } from '@/stores/users';
 import { storeToRefs } from 'pinia';
+import { useUserStore } from '@/stores/users';
 
 export default function useXpSystem() {
   const { user } = storeToRefs(useUserStore());

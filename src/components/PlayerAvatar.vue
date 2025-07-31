@@ -2,15 +2,17 @@
 import { useUserStore } from '@/stores/users';
 import { storeToRefs } from 'pinia';
 import { UISkeleton } from '@/shared/ui-kit';
+import { useXpSystem } from '@/composables';
 
 const { user } = storeToRefs(useUserStore());
+const { calculatedLevel } = useXpSystem();
 </script>
 
 <template>
   <div v-if="user" class="player-avatar">
     <img :src="user.avatar" :alt="`${user.name} avatar`" class="avatar-image" />
     <div class="level-badge">
-      {{ user.level }}
+      {{ calculatedLevel }}
     </div>
   </div>
 
