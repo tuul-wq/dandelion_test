@@ -66,7 +66,7 @@ const { calculatedLevel, progressPercentage } = useXpSystem();
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: #1e1e1e;
   font-weight: bold;
   font-size: 12px;
 }
