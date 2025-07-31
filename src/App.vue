@@ -1,7 +1,24 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { GosuAchievement, PlayerActivity, PlayerAvatar, PlayerProgressBar } from '@/components';
+import { useUserStore } from '@/stores/users';
+
+const { requestUser } = useUserStore();
+
+requestUser();
+</script>
 
 <template>
-  <h1>You did it!</h1>
+  <div class="container">
+    <PlayerAvatar />
+    <PlayerProgressBar />
+
+    <GosuAchievement />
+    <PlayerActivity />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  display: block;
+}
+</style>
