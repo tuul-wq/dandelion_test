@@ -34,8 +34,9 @@ export default defineConfig({
         ],
       },
       workbox: {
-        // Caches assets, basic runtime caching and updates
         globPatterns: ['**/*.{js,css,html,ico,png}'],
+        navigateFallback: 'offline.html',
+        navigateFallbackDenylist: [/^\/api\//, /\/[^/?]+\.[^/]+$/],
       },
     }),
   ],

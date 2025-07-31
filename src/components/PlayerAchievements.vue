@@ -33,7 +33,7 @@ const hovered = ref<string | null>(null);
 
   <ul v-else class="achievement-list">
     <li v-for="skeleton in 3" :key="'skeleton' + skeleton">
-      <UISkeleton :width="64" :height="64" />
+      <UISkeleton :width="54" :height="54" />
     </li>
   </ul>
 </template>

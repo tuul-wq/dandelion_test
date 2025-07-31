@@ -15,5 +15,5 @@ export const USER_MOCK: User = {
   xp: 850,
   nextLevelXp: 900,
   completedCourses: 7,
-  skills: ['JavaScript', 'Vue.js', 'TypeScript'],
+  skills: ['JavaScript', 'Vue.js', 'TypeScript', 'React', 'Angular', 'Rust', 'GraphQL', 'Node.js', 'Zod', 'Yup'],
 };

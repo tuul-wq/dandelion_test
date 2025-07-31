@@ -9,7 +9,11 @@ type Achievement = {
   icon: string;
 };
 
-const ACHIEVEMENTS: (Achievement & { check: (user: User) => boolean })[] = [
+type AchievementWithCheck = Achievement & {
+  check: (user: User) => boolean;
+};
+
+const ACHIEVEMENTS: AchievementWithCheck[] = [
   {
     id: 'newbie',
     title: 'Новичок',
@@ -39,7 +43,7 @@ export default function useAchievementsSystem() {
   const earnedAchievements = computed(() => {
     if (!user.value) return [];
 
-    return ACHIEVEMENTS.filter((a) => a.check(user.value));
+    return ACHIEVEMENTS.filter((a) => a.check(user.value as User));
   });
 
   return { earnedAchievements };
