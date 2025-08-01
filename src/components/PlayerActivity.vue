@@ -31,45 +31,65 @@ function formatDate(date: string) {
 
   <ul v-else class="actions-list">
     <li v-for="skeleton in 10" :key="'skeleton' + skeleton">
-      <UISkeleton :width="220" :height="90" />
+      <UISkeleton :width="278" :height="90" />
     </li>
   </ul>
 </template>
 
 <style scoped>
 .actions-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
+  gap: 16px;
 }
 
 .action-card {
   width: 100%;
   height: 90px;
-  background: linear-gradient(135deg, #099b09, #495d72);
   color: white;
-  padding: 1.2rem;
+  padding: 20px;
   border-radius: 16px;
   border: none;
   text-align: left;
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
+  transition: all 0.3s;
   cursor: pointer;
-  outline-offset: 2px;
+  outline-offset: 3px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #099b09, #495d72);
 }
 
 .action-card:hover,
 .action-card:focus-visible {
   box-shadow: 0 10px 18px rgba(0, 0, 0, 0.25);
+  animation: heartbeat 1.5s ease-in-out both;
 }
 
 .action-card:active {
-  transform: translateY(2px) scale(98%);
+  transform: translateY(2px) scale(96%);
+}
+
+@keyframes heartbeat {
+  from {
+    transform: scale(1);
+    transform-origin: center center;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    transform: scale(0.95);
+    animation-timing-function: ease-in;
+  }
+  17% {
+    transform: scale(0.98);
+    animation-timing-function: ease-out;
+  }
+  33% {
+    transform: scale(0.95);
+    animation-timing-function: ease-in;
+  }
+  45% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
 }
 
 .action-header {
@@ -84,11 +104,11 @@ function formatDate(date: string) {
 }
 
 .xp {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 0.25rem 0.5rem;
-  border-radius: 8px;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .date {

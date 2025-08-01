@@ -3,18 +3,31 @@ import { storeToRefs } from 'pinia';
 import { UISkeleton } from '@/shared/ui-kit';
 import { useUserStore } from '@/stores/users';
 import { useXpSystem } from '@/composables';
+import { ref, watch } from 'vue';
 
 const { user } = storeToRefs(useUserStore());
 const { calculatedLevel, progressPercentage } = useXpSystem();
+
+const levelUpAnimation = ref(false);
+
+watch(calculatedLevel, (_, prevLevel) => {
+  if (levelUpAnimation.value || !prevLevel) return;
+
+  levelUpAnimation.value = true;
+
+  setTimeout(() => {
+    levelUpAnimation.value = false;
+  }, 700);
+});
 </script>
 
 <template>
   <div v-if="user" class="progress-container">
     <div class="user-info">
       <span>{{ user.name }}</span>
-      <span>Level {{ calculatedLevel }}</span>
+      <span :class="{ 'level-up': levelUpAnimation }">Level {{ calculatedLevel }}</span>
     </div>
-    <div class="progress-bar">
+    <div class="progress-bar" :class="{ 'level-up': levelUpAnimation }">
       <div class="progress-fill" :style="{ width: progressPercentage }"></div>
       <div class="progress-text">{{ user.xp }} / {{ user.nextLevelXp }} XP</div>
     </div>
@@ -53,6 +66,34 @@ const { calculatedLevel, progressPercentage } = useXpSystem();
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
+.level-up {
+  animation: jello-horizontal 0.7s both;
+}
+
+@keyframes jello-horizontal {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.1, 0.9, 1);
+  }
+  40% {
+    transform: scale3d(0.9, 1.1, 1);
+  }
+  50% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  65% {
+    transform: scale3d(0.97, 1.02, 1);
+  }
+  75% {
+    transform: scale3d(1.02, 0.97, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
 .progress-fill {
   height: 100%;
   background: linear-gradient(to right, #099b09, #8bc34a);
@@ -74,5 +115,6 @@ const { calculatedLevel, progressPercentage } = useXpSystem();
 .skeleton-container {
   display: grid;
   grid-row-gap: 8px;
+  height: max-content;
 }
 </style>

@@ -39,6 +39,7 @@ requestActivities();
   display: grid;
   grid-template-columns: auto 1fr;
   column-gap: 30px;
+  row-gap: 10px;
 }
 
 .player-info > :nth-child(1) {

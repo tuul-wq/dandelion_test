@@ -16,19 +16,13 @@ const skeletonStyle = computed(() => ({
 </script>
 
 <template>
-  <div class="skeleton-wrapper">
-    <div class="skeleton" :class="{ rounded: isRounded }" :style="skeletonStyle"></div>
-  </div>
+  <div class="skeleton" :class="{ rounded: isRounded }" :style="skeletonStyle"></div>
 </template>
 
 <style scoped>
-.skeleton-wrapper {
-  display: inline-block;
-}
-
 .skeleton {
-  background-color: lightgray;
   position: relative;
+  background-color: #e3e3e3;
   overflow: hidden;
 }
 
@@ -36,7 +30,7 @@ const skeletonStyle = computed(() => ({
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, transparent, darkgray, transparent);
+  background: linear-gradient(90deg, transparent, #d2d2d2, transparent);
   animation: shimmer 1.5s infinite;
 }
 
